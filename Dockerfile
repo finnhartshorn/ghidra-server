@@ -7,9 +7,9 @@ ARG ghidra_install_path=/opt/ghidra
 FROM debian:bullseye-slim AS builder
 
 ARG ghidra_install_path
-ARG ghidra_url=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.4_build/ghidra_10.4_PUBLIC_20230928.zip
-ARG ghidra_sha256=6911d674798f145f8ea723fdd3eb67a8fae8c7be92e117bca081e6ef66acac19
-ARG ghidra_version=10.4_PUBLIC
+ARG ghidra_url=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.4_build/ghidra_12.0.4_PUBLIC_20260303.zip
+ARG ghidra_sha256=c3b458661d69e26e203d739c0c82d143cc8a4a29d9e571f099c2cf4bda62a120
+ARG ghidra_version=12.0.4_PUBLIC
 ARG ghidra_repo_path=/srv/repositories
 
 ENV LANG=C.UTF-8 \
