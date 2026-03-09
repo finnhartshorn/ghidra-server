@@ -4,7 +4,7 @@ ARG ghidra_install_path=/opt/ghidra
 # We need an OpenJDK17 image NOT based on alpine (or anything with
 # musl libc), this server has problems even with the ARM JVM, let's
 # use a very boring flavour.
-FROM debian:bullseye-slim AS builder
+FROM debian:bookworm-slim AS builder
 
 ARG ghidra_install_path
 ARG ghidra_url=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.3_build/ghidra_12.1.3_PUBLIC_20260817.zip
@@ -23,7 +23,7 @@ RUN apt -qq update \
         locales \
         gettext-base \ 
         ncat \
-        openjdk-17-jre-headless \
+        openjdk-21-jre-headless \
         unzip \
     && echo "${ghidra_sha256} ghidra.zip" | sha256sum -c \
     && unzip -qo ghidra.zip \
