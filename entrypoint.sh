@@ -30,7 +30,7 @@ if [ ! -f "${GHIDRA_HOME}/server/server.conf" ]; then
 	if [ -n "$GHIDRA_CERT_PATH" -a -n "$GHIDRA_CERT_PASSWORD" ]; then
 	    echo "------ Ghidra server cert generation ------"
 	    mkdir -p $GHIDRA_CERT_PATH
-	    openssl req -newkey rsa:4096 -sha512 -nodes -keyout "${GHIDRA_CERT_PATH}/key.pem" -x509 -days 1460 -subj "/C=US/ST=/L=/O=/CN=GhidraServer" -addext "keyUsage=critical,digitalSignature,keyEncipherment,keyCertSign" -addext "extendedKeyUsage=serverAuth,clientAuth" -addext "basicConstraints=critical,CA:TRUE" -out "${GHIDRA_CERT_PATH}/certificate.pem"
+	    openssl req -newkey rsa:4096 -sha512 -nodes -keyout "${GHIDRA_CERT_PATH}/key.pem" -x509 -days 1460 -subj "/C=US/ST=/L=/O=/CN=${HOSTNAME:-GhidraServer}" -addext "keyUsage=critical,digitalSignature,keyEncipherment,keyCertSign" -addext "extendedKeyUsage=serverAuth,clientAuth" -addext "basicConstraints=critical,CA:TRUE" -addext "subjectAltName=DNS:${HOSTNAME:-GhidraServer}" -out "${GHIDRA_CERT_PATH}/certificate.pem"
 	    openssl pkcs12 -inkey "${GHIDRA_CERT_PATH}/key.pem" -in "${GHIDRA_CERT_PATH}/certificate.pem" -export -out "${GHIDRA_CERT_PATH}/certificate.p12" -passout "pass:${GHIDRA_CERT_PASSWORD}" 
 	    keytool -importkeystore -srckeystore "${GHIDRA_CERT_PATH}/certificate.p12" -srcstoretype pkcs12 -destkeystore "${GHIDRA_CERT_PATH}/keystore.jks" -deststoretype JKS  -storepass $GHIDRA_CERT_PASSWORD -srcstorepass $GHIDRA_CERT_PASSWORD
 	    echo "------ Keys generated ------"
