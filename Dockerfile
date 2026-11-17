@@ -7,9 +7,9 @@ ARG ghidra_install_path=/opt/ghidra
 FROM debian:trixie-slim AS builder
 
 ARG ghidra_install_path
-ARG ghidra_url=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.3_build/ghidra_12.1.3_PUBLIC_20260817.zip
-ARG ghidra_sha256=93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54
-ARG ghidra_version=12.1.3_PUBLIC
+ARG ghidra_url=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.2_build/ghidra_12.2_PUBLIC_20261016.zip
+ARG ghidra_sha256=2c2cd776db3c1f6a097ba418922378ac3649cadd5e844a6f5f088ae628a7be67
+ARG ghidra_version=12.2_PUBLIC
 ARG ghidra_repo_path=/srv/repositories
 
 ENV LANG=C.UTF-8 \
