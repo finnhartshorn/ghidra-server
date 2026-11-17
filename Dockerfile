@@ -23,7 +23,7 @@ RUN apt -qq update \
         locales \
         gettext-base \ 
         ncat \
-        openjdk-21-jre-headless \
+        openjdk-25-jre-headless \
         unzip \
     && echo "${ghidra_sha256} ghidra.zip" | sha256sum -c \
     && unzip -qo ghidra.zip \
